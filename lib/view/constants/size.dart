@@ -9,5 +9,7 @@ const kheight80 = SizedBox(
 const kwidth20 =SizedBox(width:20);
 
 const kHeight200 =SizedBox(height: 200,);
+const kWidth =SizedBox(width: 10,);
+const kHeight10=SizedBox(height: 10,);
 
  

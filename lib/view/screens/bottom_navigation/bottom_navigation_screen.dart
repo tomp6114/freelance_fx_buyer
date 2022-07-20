@@ -26,7 +26,8 @@ class _BottomNavigationBuyerState extends State<BottomNavigationBuyer> {
   }
 
   final pages = [
-    HomeScreenBuyer(),
+    //HomeScreenBuyer(),
+    SingleProductWidget(),
     ChatScreenBuyer(),
     CategoriesScreen(),
     ManageOrdersScreen(),

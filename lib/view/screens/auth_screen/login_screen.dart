@@ -2,10 +2,12 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:freelance_fx_buyer/authentication/auth_helper.dart';
 import 'package:freelance_fx_buyer/view/constants/colors.dart';
 import 'package:freelance_fx_buyer/view/constants/size.dart';
 import 'package:freelance_fx_buyer/view/constants/utils.dart';
 import 'package:freelance_fx_buyer/view/screens/bottom_navigation/bottom_navigation_screen.dart';
+import 'package:freelance_fx_buyer/view/utilities/toast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -128,8 +130,20 @@ class LoginScreen extends StatelessWidget {
                                 RoundedRectangleBorder>(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
                             ))),
-                        onPressed: () {
-                          signIn(context);
+                        onPressed: () async{
+                          //signIn(context);
+                          if (formkey.currentState!.validate()) {
+                            String res = await AuthMethods().signInUser(
+                                email: emailController.text.trim(),
+                                password: passwordController.text.trim());
+                                //Get.showSnackbar(GetSnackBar(title: 'Message',message: res,duration: Duration(seconds: 3),));
+                                toast(context, res.toString());
+                                if(res=='Logged In Sucessfully'){
+                                  Get.off(BottomNavigationBuyer());
+                                }
+                          }else{
+                            toast(context, "Oops...");
+                          }
                         },
                         child: Container(
                           alignment: Alignment.center,
@@ -154,7 +168,8 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          //googleSignIn();
+                          AuthMethods().googleSignIn();
+                          toast(context, "Google Signin");
                         },
                         child: SizedBox(
                           //alignment: Alignment.center,
