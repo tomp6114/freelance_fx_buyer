@@ -14,6 +14,51 @@
       },
       "oauth_client": [
         {
+          "client_id": "707486157588-j884nt0uh16pb5ubs7k7t30lo79u2fpl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.freelance_fx_buyer",
+            "certificate_hash": "03db17f702f551b584c0a3e5a507039a391a1492"
+          }
+        },
+        {
+          "client_id": "707486157588-jeonh6r55igsj4lbo79fbavfn5hm3a62.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFWbv2Ct-j9G0t9wSrBOIP95IVsejLy3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "707486157588-jeonh6r55igsj4lbo79fbavfn5hm3a62.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707486157588:android:fa880e2fb893c1bd809001",
+        "android_client_info": {
+          "package_name": "com.example.freelance_fx_seller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "707486157588-69scb78mlbf7ik5j6go3s3g3d5e562hn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.freelance_fx_seller",
+            "certificate_hash": "7c9c13b2a0363b42ce9d1abb8b5a3894a7c8d87d"
+          }
+        },
+        {
           "client_id": "707486157588-jeonh6r55igsj4lbo79fbavfn5hm3a62.apps.googleusercontent.com",
           "client_type": 3
         }

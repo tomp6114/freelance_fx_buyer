@@ -168,7 +168,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          AuthMethods().googleSignIn();
+                          AuthMethods().googleSignIn(context);
                           toast(context, "Google Signin");
                         },
                         child: SizedBox(

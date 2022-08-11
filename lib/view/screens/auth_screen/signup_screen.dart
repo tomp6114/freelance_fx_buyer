@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:freelance_fx_buyer/authentication/auth_helper.dart';
 import 'package:freelance_fx_buyer/view/screens/bottom_navigation/bottom_navigation_screen.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -279,7 +280,9 @@ class _SignupScreenState extends State<SignupScreen> {
                               borderRadius: BorderRadius.circular(8.0),
                             )),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            AuthMethods().googleSignIn(context);
+                          },
                           child: SizedBox(
                             height: 57,
                             child: Row(

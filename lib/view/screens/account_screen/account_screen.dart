@@ -11,11 +11,9 @@ import '../auth_screen/login_screen.dart';
 class AccountScreenBuyer extends StatelessWidget {
   AccountScreenBuyer({Key? key}) : super(key: key);
 
-  
-
   @override
   Widget build(BuildContext context) {
-   final user =FirebaseAuth.instance.currentUser;
+    final user = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
       appBar: AppBar(
@@ -30,20 +28,23 @@ class AccountScreenBuyer extends StatelessWidget {
               child: Container(
                 width: 130,
                 height: 130,
-                // decoration: BoxDecoration(
-                //     image: DecorationImage(
-                //         fit: BoxFit.fill,
-                //         image: NetworkImage(imageUrl.isEmpty
-                //             ? 'https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'
-                //             : imageUrl)),
-                //     //color: Color.fromARGB(190, 46, 44, 44),
-                //     borderRadius: BorderRadius.circular(70)),
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: NetworkImage(user!.photoURL!.isEmpty
+                            ? 'https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'
+                            : user.photoURL.toString())),
+                    //color: Color.fromARGB(190, 46, 44, 44),
+                    borderRadius: BorderRadius.circular(70)),
               ),
             ),
             kheight20,
             Text(
-              user!.email!,
-              style: GoogleFonts.montserrat(color: kblack),
+              user.displayName.toString(),
+              style: GoogleFonts.montserrat(
+                color: kblack,
+                fontSize: 15,
+              ),
             )
           ],
         ),
@@ -57,7 +58,7 @@ class AccountScreenBuyer extends StatelessWidget {
                 ),
                 child: ElevatedButton(
                   onPressed: () {
-                   // Get.off(const BottomNavigationSeller());
+                    // Get.off(const BottomNavigationSeller());
                   },
                   child: Text(
                     "Become a Seller",
@@ -170,7 +171,7 @@ class AccountScreenBuyer extends StatelessWidget {
                       "Sign-Out",
                       style: GoogleFonts.montserrat(fontSize: 20),
                     ),
-                    onTap: ()async{
+                    onTap: () async {
                       FirebaseAuth.instance.signOut();
                       //  SavedId.init();
                       // SavedId.deleteId();

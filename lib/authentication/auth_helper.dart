@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:freelance_fx_buyer/view/screens/bottom_navigation/bottom_navigation_screen.dart';
 
 import 'package:get/get.dart';
@@ -82,11 +83,28 @@ class AuthMethods {
         .then((value) => Get.offAll(() => const OnBoardScreen()));
   }
 
-  googleSignIn() async {
-    var user = await _googleSignIn.signIn();
-    print(user);
-    if(user!.id.isNotEmpty){
-      Get.to(BottomNavigationBuyer());
-    }
+  googleSignIn(BuildContext context) async {
+    // var user = await _googleSignIn.signIn();
+    // print(user);
+    // if(user!.id.isNotEmpty){
+    //   Get.to(BottomNavigationBuyer());
+    // }
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
+    if (googleSignInAccount != null) {
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+      final AuthCredential authCredential = GoogleAuthProvider.credential(
+          idToken: googleSignInAuthentication.idToken,
+          accessToken: googleSignInAuthentication.accessToken);
+       
+      // Getting users credential
+      UserCredential result = await _auth.signInWithCredential(authCredential); 
+      User? user = result.user;
+       if (result != null) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => BottomNavigationBuyer()));
+      } 
+  }
   }
 }
